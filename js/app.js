@@ -1,8 +1,10 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Estado temporal de la aplicación
-  let citas = [];
+  // Clave utilizada para guardar las citas en el navegador
+  const CLAVE_ALMACENAMIENTO = "turnoFacilCitas";
+
+  let citas = cargarCitas();
 
   // Precios disponibles por servicio
   const preciosServicios = {
@@ -58,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     citas.push(nuevaCita);
 
+    guardarCitas();
+
     renderizarCitas();
     formularioReserva.reset();
 
@@ -90,6 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const citaId = Number(botonCancelar.dataset.id);
 
     citas = citas.filter((cita) => cita.id !== citaId);
+
+    guardarCitas();
 
     renderizarCitas();
   });
@@ -313,6 +319,36 @@ document.addEventListener("DOMContentLoaded", () => {
   function ocultarMensaje() {
     mensajeReserva.textContent = "";
     mensajeReserva.className = "alert d-none mb-0";
+  }
+
+  // Guarda el arreglo de citas convertido a formato JSON
+  function guardarCitas() {
+    try {
+      const citasEnJSON = JSON.stringify(citas);
+      localStorage.setItem(CLAVE_ALMACENAMIENTO, citasEnJSON);
+    } catch (error) {
+      console.error("No fue posible guardar las citas.", error);
+    }
+  }
+
+  // Recupera las citas guardadas al cargar la página
+  function cargarCitas() {
+    try {
+      const citasGuardadas = localStorage.getItem(CLAVE_ALMACENAMIENTO);
+
+      if (!citasGuardadas) {
+        return [];
+      }
+
+      const citasConvertidas = JSON.parse(citasGuardadas);
+
+      return Array.isArray(citasConvertidas) ? citasConvertidas : [];
+    } catch (error) {
+      console.error("No fue posible recuperar las citas.", error);
+      localStorage.removeItem(CLAVE_ALMACENAMIENTO);
+
+      return [];
+    }
   }
 
   // Estado inicial de la sección de citas
