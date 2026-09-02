@@ -270,6 +270,232 @@
     </div>
   </section>
 
+  <!-- Sección para reservar una cita -->
+  <section id="reservar" class="py-5">
+    <div class="container py-lg-4">
+      <div class="row align-items-start g-5">
+        <!-- Información del proceso de reserva -->
+        <div class="col-lg-5">
+          <span class="badge text-bg-primary mb-3">Reserva en línea</span>
+
+          <h2 class="display-6 fw-bold mb-4">
+            Agenda tu próxima cita
+          </h2>
+
+          <p class="lead text-body-secondary mb-4">
+            Completa el formulario con tus datos, selecciona el servicio y
+            escoge el horario que mejor se adapte a ti.
+          </p>
+
+          <div class="list-group shadow-sm">
+            <div class="list-group-item p-4">
+              <div class="d-flex gap-3">
+                <span class="badge text-bg-primary rounded-pill align-self-start">
+                  1
+                </span>
+
+                <div>
+                  <h3 class="h6 fw-bold mb-1">Completa tus datos</h3>
+                  <p class="text-body-secondary mb-0">
+                    Indica tu nombre y datos de contacto.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-group-item p-4">
+              <div class="d-flex gap-3">
+                <span class="badge text-bg-primary rounded-pill align-self-start">
+                  2
+                </span>
+
+                <div>
+                  <h3 class="h6 fw-bold mb-1">Selecciona el servicio</h3>
+                  <p class="text-body-secondary mb-0">
+                    Escoge la opción que quieres reservar.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-group-item p-4">
+              <div class="d-flex gap-3">
+                <span class="badge text-bg-primary rounded-pill align-self-start">
+                  3
+                </span>
+
+                <div>
+                  <h3 class="h6 fw-bold mb-1">Confirma el horario</h3>
+                  <p class="text-body-secondary mb-0">
+                    Revisa la fecha y hora antes de registrar la cita.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario de reserva -->
+        <div class="col-lg-7">
+          <div class="card border-0 shadow">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="h4 fw-bold mb-4">Información de la cita</h3>
+
+              <form id="formularioReserva">
+                <div class="row g-4">
+                  <!-- Datos personales -->
+                  <div class="col-12">
+                    <label class="form-label" for="nombreCliente">
+                      Nombre completo
+                    </label>
+
+                    <input class="form-control" id="nombreCliente" name="nombre" type="text"
+                      placeholder="Escribe tu nombre" autocomplete="name" required />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="telefonoCliente">
+                      Teléfono
+                    </label>
+
+                    <input class="form-control" id="telefonoCliente" name="telefono" type="tel"
+                      placeholder="300 000 0000" autocomplete="tel" required />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="correoCliente">
+                      Correo electrónico
+                    </label>
+
+                    <input class="form-control" id="correoCliente" name="correo" type="email"
+                      placeholder="correo@ejemplo.com" autocomplete="email" required />
+                  </div>
+
+                  <!-- Información del servicio -->
+                  <div class="col-12">
+                    <label class="form-label" for="servicioReserva">
+                      Servicio
+                    </label>
+
+                    <select class="form-select" id="servicioReserva" name="servicio" required>
+                      <option value="" selected disabled>
+                        Selecciona un servicio
+                      </option>
+                      <option value="Corte clásico">
+                        Corte clásico - $25.000
+                      </option>
+                      <option value="Arreglo de barba">
+                        Arreglo de barba - $18.000
+                      </option>
+                      <option value="Combo completo">
+                        Combo completo - $35.000
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="fechaReserva">
+                      Fecha
+                    </label>
+
+                    <input class="form-control" id="fechaReserva" name="fecha" type="date" required />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="horaReserva">
+                      Hora
+                    </label>
+
+                    <select class="form-select" id="horaReserva" name="hora" required>
+                      <option value="" selected disabled>
+                        Selecciona una hora
+                      </option>
+                      <option value="09:00">9:00 a. m.</option>
+                      <option value="10:30">10:30 a. m.</option>
+                      <option value="12:00">12:00 m.</option>
+                      <option value="14:00">2:00 p. m.</option>
+                      <option value="15:30">3:30 p. m.</option>
+                      <option value="17:00">5:00 p. m.</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="notasReserva">
+                      Indicaciones adicionales
+                      <span class="text-body-secondary">(opcional)</span>
+                    </label>
+
+                    <textarea class="form-control" id="notasReserva" name="notas" rows="3"
+                      placeholder="Escribe alguna indicación para el profesional"></textarea>
+                  </div>
+
+                  <!-- Espacio para mensajes generados con JavaScript -->
+                  <div class="col-12">
+                    <div class="alert d-none mb-0" id="mensajeReserva" role="alert" aria-live="polite"></div>
+                  </div>
+
+                  <!-- Acciones del formulario -->
+                  <div class="col-12">
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                      <button class="btn btn-primary btn-lg" type="submit">
+                        Confirmar reserva
+                      </button>
+
+                      <button class="btn btn-outline-secondary btn-lg" type="reset">
+                        Limpiar formulario
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de citas registradas -->
+  <section id="citas" class="py-5 bg-body-tertiary">
+    <div class="container py-lg-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+        <div>
+          <span class="badge text-bg-primary mb-3">Tu agenda</span>
+
+          <h2 class="display-6 fw-bold mb-2">Mis citas</h2>
+
+          <p class="lead text-body-secondary mb-0">
+            Consulta las reservas que has registrado.
+          </p>
+        </div>
+
+        <span class="badge text-bg-dark fs-6 px-3 py-2" id="contadorCitas">
+          0 citas
+        </span>
+      </div>
+
+      <!-- Mensaje mostrado cuando todavía no existen citas -->
+      <div class="card border-0 shadow-sm" id="estadoVacio">
+        <div class="card-body text-center p-5">
+          <span class="badge text-bg-secondary mb-3">Agenda vacía</span>
+
+          <h3 class="h4 fw-bold">Todavía no tienes citas registradas</h3>
+
+          <p class="text-body-secondary mb-4">
+            Completa el formulario para crear tu primera reserva.
+          </p>
+
+          <a class="btn btn-primary" href="#reservar">
+            Registrar una cita
+          </a>
+        </div>
+      </div>
+
+      <!-- JavaScript agregará las tarjetas de las citas en este contenedor -->
+      <div class="row g-4" id="listaCitas" aria-live="polite"></div>
+    </div>
+  </section>
+
   <!-- Sección de beneficios -->
   <section id="beneficios" class="py-5">
     <div class="container py-lg-4">
@@ -356,4 +582,5 @@
 
   <script src="js/app.js"></script>
 </body>
+
 </html>
