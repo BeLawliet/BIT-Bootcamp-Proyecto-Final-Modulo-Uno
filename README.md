@@ -4,7 +4,7 @@ TurnoFácil es una aplicación web para reservar citas en una barbería o salón
 
 ## Video de presentación
 
-[Descargar video de presentación](./resources/presentacion-turnofacil.mp4?raw=true)
+[Descargar video de presentación](./resources/Resultado.mp4?raw=true)
 
 ## Funcionalidades
 
